@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Você 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0b0f1a;
+  --card:#141a2e;
+  --text:#f5f5f5;
+  --accent:#ff6fae;
+}
+
+body.light{
+  --bg:#fff0f6;
+  --card:#ffffff;
+  --text:#2b2b2b;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Poppins',sans-serif;
+  min-height:100vh;
+  overflow:hidden;
+}
+
+.container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+.card{
+  background:var(--card);
+  padding:40px;
+  border-radius:20px;
+  max-width:420px;
+  text-align:center;
+  box-shadow:0 0 40px rgba(255,111,174,.3);
+  animation:fadeIn 2s;
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  margin-bottom:20px;
+  color:var(--accent);
+}
+
+.poem{
+  font-size:15px;
+  line-height:1.8;
+  opacity:0;
+  animation:poem 3s forwards 1s;
+}
+
+.buttons{
+  margin-top:25px;
+  display:flex;
+  gap:10px;
+  justify-content:center;
+}
+
+button{
+  padding:10px 15px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  background:var(--accent);
+  color:white;
+  font-size:13px;
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+@keyframes fadeIn{
+  from{opacity:0;transform:scale(.9)}
+  to{opacity:1;transform:scale(1)}
+}
+
+@keyframes poem{
+  to{opacity:1}
+}
+
+/* Partículas */
+.particle{
+  position:absolute;
+  width:6px;
+  height:6px;
+  background:var(--accent);
+  border-radius:50%;
+  opacity:.4;
+  animation:float 10s linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh)}
+  to{transform:translateY(-10vh)}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="card">
+    <h1>Para Você 💗</h1>
+
+    <div class="poem">
+      Não foi o acaso que te trouxe até aqui.<br>
+      Foi o universo conspirando silêncio.<br><br>
+
+      Te encontrei nos detalhes,<br>
+      nos gestos pequenos,<br>
+      no jeito leve de existir.<br><br>
+
+      Se o amor tivesse forma,<br>
+      teria o teu nome<br>
+      escrito com calma.
+    </div>
+
+    <div class="buttons">
+      <button onclick="toggleMusic()">🎵 Música</button>
+      <button onclick="toggleTheme()">🌙 Modo</button>
+    </div>
+  </div>
+</div>
+
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_5e7b8b3c55.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const music = document.getElementById("music");
+
+function toggleMusic(){
+  if(music.paused){
+    music.play();
+  }else{
+    music.pause();
+  }
+}
+
+function toggleTheme(){
+  document.body.classList.toggle("light");
+}
+
+// Partículas mágicas
+for(let i=0;i<30;i++){
+  const p=document.createElement("div");
+  p.className="particle";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=5+Math.random()*10+"s";
+  document.body.appendChild(p);
+}
+</script>
+
+</body>
+</html>
