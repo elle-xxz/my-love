@@ -135,4 +135,10 @@ body.dark .card {
     transform: translateY(0) scale(1);
     filter: blur(0);
   }
+  .music {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 360px;
+  animation: fadeIn 2s ease;
+}
 }
