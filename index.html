@@ -1,221 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cartas do Amor 💌</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-
-body{
-  background:radial-gradient(circle at top,#1a1033,#05010f);
-  color:#fff;
-  font-family:'Poppins',sans-serif;
-  min-height:100vh;
-  overflow:hidden;
-}
-
-h1{
-  font-family:'Playfair Display',serif;
-  text-align:center;
-  margin:25px 0;
-  color:#ff9bd1;
-}
-
-.deck{
-  display:flex;
-  justify-content:center;
-  gap:15px;
-  margin-top:60px;
-  flex-wrap:wrap;
-}
-
-.card{
-  width:120px;
-  height:170px;
-  perspective:1000px;
-  cursor:pointer;
-}
-
-.inner{
-  width:100%;
-  height:100%;
-  position:relative;
-  transition:transform 1s;
-  transform-style:preserve-3d;
-}
-
-.card.flipped .inner{
-  transform:rotateY(180deg);
-}
-
-.face{
-  position:absolute;
-  width:100%;
-  height:100%;
-  border-radius:15px;
-  backface-visibility:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding:10px;
-}
-
-.front{
-  background:linear-gradient(135deg,#ff6fae,#ff9bd1);
-  font-size:18px;
-}
-
-.back{
-  background:#1c1438;
-  transform:rotateY(180deg);
-  font-size:13px;
-  line-height:1.6;
-}
-
-button{
-  margin:30px auto;
-  display:block;
-  padding:10px 20px;
-  border:none;
-  border-radius:30px;
-  background:#ff6fae;
-  color:#fff;
-  cursor:pointer;
-  font-size:14px;
-}
-
-.final{
-  position:absolute;
-  inset:0;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:rgba(0,0,0,.7);
-  opacity:0;
-  pointer-events:none;
-  transition:1.5s;
-}
-
-.final.show{
-  opacity:1;
-  pointer-events:auto;
-}
-
-.poem{
-  background:#140c2b;
-  padding:30px;
-  border-radius:20px;
-  max-width:420px;
-  text-align:center;
-  box-shadow:0 0 40px rgba(255,111,174,.4);
-  animation:rise 2s;
-}
-
-@keyframes rise{
-  from{transform:translateY(40px);opacity:0}
-  to{transform:translateY(0);opacity:1}
-}
-
-/* Partículas */
-.particle{
-  position:absolute;
-  width:6px;
-  height:6px;
-  background:#ff9bd1;
-  border-radius:50%;
-  opacity:.4;
-  animation:float 10s linear infinite;
-}
-
-@keyframes float{
-  from{transform:translateY(100vh)}
-  to{transform:translateY(-10vh)}
-}
-</style>
+  <meta charset="UTF-8">
+  <title>Para Você 💖</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h1>Cartas do Amor 💌</h1>
+  <div class="card">
+    <h1>💌 Para Você</h1>
 
-<div class="deck" id="deck"></div>
+    <img src="imagens/amor.jpg" alt="amor" class="imagem">
 
-<button onclick="toggleMusic()">🎵 Música</button>
-
-<div class="final" id="final">
-  <div class="poem">
-    <h2 style="color:#ff9bd1;margin-bottom:15px">Nosso Poema</h2>
-    <p>
-      Não foi o acaso que te trouxe até aqui.<br><br>
-      Foi o destino escrevendo devagar.<br><br>
-      Te encontrei nos detalhes simples,<br>
-      onde o coração aprende a ficar.<br><br>
-      Se o amor tivesse forma,<br>
-      seria esse instante:<br>
-      você e eu, sem precisar explicar.
+    <p id="texto">
+      Clique no botão para revelar uma mensagem...
     </p>
+
+    <button onclick="mostrarTexto()">💗 Revelar</button>
   </div>
-</div>
 
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_5e7b8b3c55.mp3">
-</audio>
-
-<script>
-const versos = [
-  "Não foi o acaso que te trouxe até aqui.",
-  "Foi o destino escrevendo devagar.",
-  "Te encontrei nos detalhes simples,",
-  "onde o coração aprende a ficar.",
-  "Se o amor tivesse forma,",
-  "seria esse instante:",
-  "você e eu, sem precisar explicar."
-];
-
-const deck=document.getElementById("deck");
-let flipped=0;
-
-versos.forEach(v=>{
-  const card=document.createElement("div");
-  card.className="card";
-  card.innerHTML=`
-    <div class="inner">
-      <div class="face front">💗</div>
-      <div class="face back">${v}</div>
-    </div>
-  `;
-  card.onclick=()=>{
-    if(!card.classList.contains("flipped")){
-      card.classList.add("flipped");
-      flipped++;
-      if(flipped===versos.length){
-        setTimeout(()=>document.getElementById("final").classList.add("show"),1200);
-      }
-    }
-  }
-  deck.appendChild(card);
-});
-
-// Música
-const music=document.getElementById("music");
-function toggleMusic(){
-  music.paused?music.play():music.pause();
-}
-
-// Partículas
-for(let i=0;i<30;i++){
-  const p=document.createElement("div");
-  p.className="particle";
-  p.style.left=Math.random()*100+"vw";
-  p.style.animationDuration=5+Math.random()*10+"s";
-  document.body.appendChild(p);
-}
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
