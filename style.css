@@ -6,21 +6,35 @@
 
 body{
   min-height:100vh;
-  background:linear-gradient(135deg,#ffb6d5,#ffe6f0);
   display:flex;
   justify-content:center;
   align-items:center;
-  font-family:Arial, sans-serif;
+  font-family:'Poppins', Arial, sans-serif;
+  transition:background .6s;
+}
+
+/* TEMAS */
+.tema-rosa{
+  background:linear-gradient(135deg,#ffd6e8,#fff0f6);
+}
+
+.tema-noite{
+  background:linear-gradient(135deg,#1a1a2e,#0f0f1a);
 }
 
 .card{
   background:white;
   padding:30px;
   border-radius:20px;
-  text-align:center;
   width:320px;
+  text-align:center;
   box-shadow:0 10px 30px rgba(0,0,0,.2);
-  animation:entrar 1.5s;
+  animation:entrar 1.2s;
+}
+
+.tema-noite .card{
+  background:#1f1f2f;
+  color:#f5f5f5;
 }
 
 @keyframes entrar{
@@ -29,25 +43,28 @@ body{
 }
 
 h1{
-  color:#ff5fa2;
   margin-bottom:15px;
+  color:#ff5fa2;
 }
 
-.imagem{
-  width:100%;
-  border-radius:15px;
-  margin-bottom:15px;
+.tema-noite h1{
+  color:#ff9bd1;
 }
 
 p{
+  min-height:70px;
   font-size:15px;
-  color:#444;
-  min-height:60px;
+}
+
+.botoes{
+  margin-top:15px;
+  display:flex;
+  gap:10px;
+  justify-content:center;
 }
 
 button{
-  margin-top:15px;
-  padding:10px 20px;
+  padding:10px 18px;
   border:none;
   border-radius:30px;
   background:#ff5fa2;
