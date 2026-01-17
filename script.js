@@ -6,31 +6,31 @@ const verses = [
   "Cada parte de mim escolhe você."
 ];
 
-let index = 0;
-
-const cardsDiv = document.getElementById("cards");
-const nextBtn = document.getElementById("nextBtn");
-const music = document.getElementById("music");
+const cardsContainer = document.getElementById("cards");
+const button = document.getElementById("nextBtn");
 const themeBtn = document.getElementById("themeBtn");
 
-nextBtn.addEventListener("click", () => {
-  if (index === 0) {
-    music.volume = 0.4;
-    music.play();
-  }
+let index = 0;
 
+// começa no tema claro
+document.body.classList.add("light");
+
+// clique para revelar cartas
+button.addEventListener("click", () => {
   if (index < verses.length) {
     const card = document.createElement("div");
-    card.className = "card";
+    card.classList.add("card");
     card.textContent = verses[index];
-    cardsDiv.appendChild(card);
+    cardsContainer.appendChild(card);
     index++;
-  } else {
-    nextBtn.textContent = "✨ Poema completo";
-    nextBtn.disabled = true;
+
+    if (index === verses.length) {
+      button.textContent = "Tudo que eu sentia 🤍";
+    }
   }
 });
 
+// mudar tema
 themeBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark");
   document.body.classList.toggle("light");
