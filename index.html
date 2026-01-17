@@ -2,28 +2,25 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Algo pra você</title>
+  <title>Cartas do Amor</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="light">
+
+  <button id="themeBtn">🌙 Mudar tema</button>
 
   <div class="container">
-    <h1>Algo pra você</h1>
+    <h1>Cartas do Amor</h1>
+    <p class="hint">Clique para revelar</p>
 
-    <button id="botao" onclick="mostrarTexto()">
-      Clique aqui
-    </button>
+    <div id="cards"></div>
 
-    <div id="texto" class="texto escondido">
-      <p>
-        Não foi o acaso que me fez pensar em você.<br><br>
-        Foi o silêncio calmo do coração,<br>
-        escolhendo ficar.
-      </p>
-    </div>
-
-    <button class="tema" onclick="trocarTema()">Mudar tema</button>
+    <button id="nextBtn">💌 Revelar carta</button>
   </div>
+
+  <audio id="music" loop>
+    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Komiku/Its_time_for_adventure_/Komiku_-_12_-_Friends.mp3">
+  </audio>
 
   <script src="script.js"></script>
 </body>
