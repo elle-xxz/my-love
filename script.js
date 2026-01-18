@@ -7,16 +7,13 @@ const verses = [
 ];
 
 const cardsContainer = document.getElementById("cards");
-const button = document.getElementById("nextBtn");
+const nextBtn = document.getElementById("nextBtn");
 const themeBtn = document.getElementById("themeBtn");
 
 let index = 0;
 
-// começa no tema claro
-document.body.classList.add("light");
-
-// revelar cartas uma a uma
-button.addEventListener("click", () => {
+// revelar cartinhas
+nextBtn.addEventListener("click", () => {
   if (index < verses.length) {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -25,12 +22,12 @@ button.addEventListener("click", () => {
     index++;
 
     if (index === verses.length) {
-      button.textContent = "Tudo que eu sentia 🤍";
+      nextBtn.textContent = "Tudo que eu sentia 🤍";
     }
   }
 });
 
-// mudar tema + texto do botão
+// trocar tema
 themeBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark");
   document.body.classList.toggle("light");
