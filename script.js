@@ -15,7 +15,7 @@ let index = 0;
 // começa no tema claro
 document.body.classList.add("light");
 
-// clique para revelar cartas
+// revelar cartas uma a uma
 button.addEventListener("click", () => {
   if (index < verses.length) {
     const card = document.createElement("div");
@@ -30,8 +30,13 @@ button.addEventListener("click", () => {
   }
 });
 
-// mudar tema
+// mudar tema + texto do botão
 themeBtn.addEventListener("click", () => {
   document.body.classList.toggle("dark");
   document.body.classList.toggle("light");
+
+  themeBtn.textContent =
+    document.body.classList.contains("dark")
+      ? "☀️ Mudar tema"
+      : "🌙 Mudar tema";
 });
