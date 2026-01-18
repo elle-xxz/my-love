@@ -64,22 +64,41 @@ h1 {
 }
 
 .card {
-  width: 100%;
-  max-width: 520px;
-  background: rgba(255, 255, 255, 0.85);
-  padding: 18px 22px;
-  border-radius: 18px;
-  font-size: 1.05rem;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  width: 220px;
+  min-height: 120px;
+  padding: 20px;
+  border-radius: 22px;
+  text-align: center;
+  font-size: 1rem;
+
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
 
   opacity: 0;
   transform: translateY(20px);
   animation: aparecer 0.5s ease forwards;
+
+  /* 💫 brilho ao passar o mouse */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0 25px rgba(255, 182, 193, 0.9);
+  transform: translateY(-5px);
 }
 
 body.dark .card {
-  background: rgba(40, 40, 60, 0.85);
+  background: rgba(40, 40, 60, 0.9);
+  box-shadow: 0 8px 20px rgba(255, 105, 180, 0.2);
 }
+
+@keyframes aparecer {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 /* ===== ANIMAÇÃO ===== */
 @keyframes aparecer {
