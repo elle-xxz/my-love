@@ -148,14 +148,10 @@ body.dark .card {
   max-width: 360px;
   animation: fadeIn 2s ease;
 }
-.signature {
-  margin-top: 12px;
-  font-size: 14px;
+.assinatura {
+  margin-top: 20px;
   font-style: italic;
   opacity: 0.8;
-
-  text-align: left;
-  align-self: flex-start;
 }
 
 }
